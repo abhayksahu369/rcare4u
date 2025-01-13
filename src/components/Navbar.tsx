@@ -20,7 +20,7 @@ export default function Navbar() {
             <Link to="/appointments" className="text-gray-700 hover:text-teal-600">
               My Orders & Appointments
             </Link>
-            <a href="tel:+917641908850" className="text-teal-600 hover:text-teal-700 flex items-center space-x-1">
+            <a href="tel:+918638550189" className="text-teal-600 hover:text-teal-700 flex items-center space-x-1">
               <Phone className="h-5 w-5" />
               <span>Call Us</span>
             </a>
