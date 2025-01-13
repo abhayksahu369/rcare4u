@@ -24,7 +24,7 @@ export default function Navbar() {
               <Phone className="h-5 w-5" />
               <span>Call Us</span>
             </a>
-            <a href="https://wa.me/917641908850" className="text-teal-600 hover:text-teal-700 flex items-center space-x-1">
+            <a href="https://wa.me/918638550189" className="text-teal-600 hover:text-teal-700 flex items-center space-x-1">
               <MessageCircle className="h-5 w-5" />
               <span>WhatsApp Us</span>
             </a>
