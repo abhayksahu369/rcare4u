@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const hospitals = [
   {
     id: 1,
-    name: "Apollo Hospitals",
-    address: "Plot No 1, Eastern Metropolitan Bypass",
+    name: "Amrit Asmi Institute of Living Life",
+    address: "Subham Red Stone, 3rd Floor, Near Pantaloons (Down Town Hospital), G.S. Road",
     image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80",
     rating: 4.8,
     specialties: ["Cardiology", "Neurology", "Orthopedics"],
@@ -14,8 +14,8 @@ const hospitals = [
   },
   {
     id: 2,
-    name: "Max Super Speciality Hospital",
-    address: "Press Enclave Road, Saket",
+    name: "Apollo Clinic",
+    address: "Kanchan Rd, opp. Bora Service, South Sarania, Ulubari, Guwahati, Assam",
     image: "https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?auto=format&fit=crop&w=800&q=80",
     rating: 4.6,
     specialties: ["Oncology", "Gastroenterology", "Pediatrics"],
@@ -24,13 +24,23 @@ const hospitals = [
   },
   {
     id: 3,
-    name: "Fortis Memorial Hospital",
-    address: "Sector 44, Gurugram",
+    name: "Ayur Health Care",
+    address: "KRC Road Narayan Nagar, Santipur Guwahati, Assam",
     image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
     rating: 4.7,
     specialties: ["Cardiac Surgery", "Neurosurgery", "Transplants"],
     openHours: "24/7",
     phone: "+91-8765432109"
+  },
+  {
+    id: 4,
+    name: "City Heart",
+    address: "Rajgarh Link Rd, Anil Nagar, Nabin Nagar, Guwahati, Assam",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
+    rating: 4.7,
+    specialties: ["Cardiology", "Cardiac Care"],
+    openHours: "24/7",
+    phone: "+91-8765432110"
   }
 ];
 
@@ -83,7 +93,7 @@ export default function HospitalListing() {
                 <p className="text-sm">{hospital.phone}</p>
               </div>
               
-              <div className="flex flex-wrap gap-2">
+              {/* <div className="flex flex-wrap gap-2">
                 {hospital.specialties.map((specialty) => (
                   <span
                     key={specialty}
@@ -92,7 +102,7 @@ export default function HospitalListing() {
                     {specialty}
                   </span>
                 ))}
-              </div>
+              </div> */}
             </div>
           </Link>
         ))}

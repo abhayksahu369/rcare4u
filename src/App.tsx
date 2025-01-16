@@ -5,7 +5,8 @@ import Home from './pages/Home';
 import DoctorSearch from './pages/DoctorSearch';
 import PharmacySearch from './pages/PharmacySearch';
 import Appointments from './pages/Appointments';
-import HospitalDetails from './pages/HospitalDetails';
+import HospitalDesc from './components/HospitalDesc';
+import Doctors from './pages/Doctors';
 
 export default function App() {
   return (
@@ -18,7 +19,8 @@ export default function App() {
             <Route path="/doctors" element={<DoctorSearch />} />
             <Route path="/pharmacies" element={<PharmacySearch />} />
             <Route path="/appointments" element={<Appointments />} />
-            <Route path="/hospital/:id" element={<HospitalDetails />} />
+            <Route path="/hospital/:id" element={<HospitalDesc />} />
+            <Route path="/hospital/:id/:dep" element={<Doctors />} />
           </Routes>
         </main>
         <Footer />

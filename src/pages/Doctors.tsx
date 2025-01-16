@@ -3,82 +3,279 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, Star, Clock, Phone, Award, Stethoscope, Calendar, X, CheckCircle } from 'lucide-react';
 
 // Mock data for doctors
+// const hospitals = [
+//   {
+//     id: 1,
+//     name: "Apollo Clinic",
+//     address: "Kanchan Rd, opp. Bora Service, South Sarania, Ulubari",
+//     image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80",
+//     rating: 4.8,
+//     specialties: ["Cardiology", "Neurology", "Orthopedics"],
+//     openHours: "24/7",
+//     phone: "+91-1234567890"
+//   },
+//   {
+//     id: 2,
+//     name: "Max Super Speciality Hospital",
+//     address: "Press Enclave Road, Saket",
+//     image: "https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?auto=format&fit=crop&w=800&q=80",
+//     rating: 4.6,
+//     specialties: ["Oncology", "Gastroenterology", "Pediatrics"],
+//     openHours: "24/7",
+//     phone: "+91-9876543210"
+//   },
+//   {
+//     id: 3,
+//     name: "Fortis Memorial Hospital",
+//     address: "Sector 44, Gurugram",
+//     image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
+//     rating: 4.7,
+//     specialties: ["Cardiac Surgery", "Neurosurgery", "Transplants"],
+//     openHours: "24/7",
+//     phone: "+91-8765432109"
+//   }
+// ];
+
+// const doctorsData = {
+//   1: [
+//     {
+//       id: 1,
+//       name: "Dr. Sarah Johnson",
+//       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
+//       specialization: "Cardiologist",
+//       experience: 15,
+//       qualification: "MBBS, MD, DM (Cardiology)",
+//       languages: ["English", "Hindi"],
+//       rating: 4.9,
+//       consultationFee: 1500,
+//       availability: ["Mon", "Wed", "Fri"],
+//       isBooked: false
+//     },
+//     {
+//       id: 2,
+//       name: "Dr. Robert Wilson",
+//       image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=80",
+//       specialization: "Neurologist",
+//       experience: 12,
+//       qualification: "MBBS, MD (Neurology)",
+//       languages: ["English", "Hindi", "Bengali"],
+//       rating: 4.7,
+//       consultationFee: 1200,
+//       availability: ["Tue", "Thu", "Sat"],
+//       isBooked: false
+//     }
+//   ],
+//   // ... rest of the doctors data remains the same
+// };
+
+// ... rest of the hospital data remains the same
 const hospitals = [
   {
     id: 1,
-    name: "Apollo Hospitals",
-    address: "Plot No 1, Eastern Metropolitan Bypass",
+    name: "Amrit Asmi Institute of Living Life",
+    address: "Subham Red Stone, 3rd Floor, Near Pantaloons (Down Town Hospital), G.S. Road",
     image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80",
     rating: 4.8,
     specialties: ["Cardiology", "Neurology", "Orthopedics"],
     openHours: "24/7",
-    phone: "+91-1234567890"
+    phone: "+91-1234567890",
+    description: "Amrit Asmi Institute of Living Life offers a holistic approach to healthcare with a focus on improving mental and physical well-being through expert consultations and advanced diagnostics.",
+    departments: [
+      {
+        name: "Orthopedics",
+        doctors: [
+          {
+            id: 1,
+            name: "Dr. Rajesh Sharma",
+            image: "https://tse2.mm.bing.net/th?id=OIP.0hQU8JAptZW9RH5A6eCgmgHaFB&pid=Api&P=0&h=180",
+            specialization: "Orthopedic Surgeon",
+            experience: 12,
+            qualification: "MBBS, MS (Orthopedics)",
+            languages: ["English", "Hindi"],
+            rating: 4.7,
+            consultationFee: 1200,
+            availability: ["Tue", "Thu", "Sat"],
+            isBooked: false
+          }
+        ]
+      },
+      {
+        name: "Dermatology, Venereology and Leprosy",
+        doctors: [
+          {
+            id: 2,
+            name: "Dr. Priya Mehta",
+            image: "https://tse3.mm.bing.net/th?id=OIP.ofx88_RUVmLrTWAYHmr5tQHaE8&pid=Api&P=0&h=180",
+            specialization: "Dermatologist",
+            experience: 8,
+            qualification: "MBBS, MD (Dermatology)",
+            languages: ["English", "Hindi"],
+            rating: 4.6,
+            consultationFee: 1000,
+            availability: ["Mon", "Wed", "Fri"],
+            isBooked: false
+          }
+        ]
+      },
+      {
+        name: "General Medicine",
+        doctors: [
+          {
+            id: 3,
+            name: "Dr. Suresh Gupta",
+            image: "https://tse2.mm.bing.net/th?id=OIP.VEMbAGEdHz8Xg0zW2Ja7aAHaG2&pid=Api&P=0&h=180",
+            specialization: "General Physician",
+            experience: 10,
+            qualification: "MBBS, MD (General Medicine)",
+            languages: ["English", "Hindi", "Assamese"],
+            rating: 4.8,
+            consultationFee: 900,
+            availability: ["Mon", "Wed", "Fri"],
+            isBooked: false
+          }
+        ]
+      },
+      {
+        name: "Pediatrics",
+        doctors: [
+          {
+            id: 4,
+            name: "Dr. Anjali Verma",
+            image: "https://img.freepik.com/premium-photo/indian-female-doctor-indian-nurse_714173-205.jpg",
+            specialization: "Pediatrician",
+            experience: 9,
+            qualification: "MBBS, MD (Pediatrics)",
+            languages: ["English", "Hindi"],
+            rating: 4.7,
+            consultationFee: 1100,
+            availability: ["Mon", "Thu", "Sat"],
+            isBooked: false
+          }
+        ]
+      },
+      {
+        name: "Psychiatry",
+        doctors: [
+          {
+            id: 5,
+            name: "Dr. Vikram Singh",
+            image: "https://tse2.mm.bing.net/th?id=OIP.QlUEurMwqqxzK0aUqHJhlAAAAA&pid=Api&P=0&h=180",
+            specialization: "Psychiatrist",
+            experience: 11,
+            qualification: "MBBS, MD (Psychiatry)",
+            languages: ["English", "Hindi"],
+            rating: 4.8,
+            consultationFee: 1300,
+            availability: ["Tue", "Fri"],
+            isBooked: false
+          }
+        ]
+      }
+    ]
   },
   {
     id: 2,
-    name: "Max Super Speciality Hospital",
-    address: "Press Enclave Road, Saket",
+    name: "Apollo Clinic",
+    address: "Kanchan Rd, opp. Bora Service, South Sarania, Ulubari, Guwahati, Assam",
     image: "https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?auto=format&fit=crop&w=800&q=80",
     rating: 4.6,
     specialties: ["Oncology", "Gastroenterology", "Pediatrics"],
     openHours: "24/7",
-    phone: "+91-9876543210"
-  },
-  {
-    id: 3,
-    name: "Fortis Memorial Hospital",
-    address: "Sector 44, Gurugram",
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-    rating: 4.7,
-    specialties: ["Cardiac Surgery", "Neurosurgery", "Transplants"],
-    openHours: "24/7",
-    phone: "+91-8765432109"
+    phone: "+91-9876543210",
+    description: "Apollo Clinic is known for its state-of-the-art facilities and expert specialists. It provides comprehensive healthcare services, including pediatrics and oncology treatments, with a patient-first approach.",
+    departments: [
+      {
+        name: "Orthopedics",
+        doctors: [
+          {
+            id: 1,
+            name: "Dr. Arvind Malhotra",
+            image: "https://tse2.mm.bing.net/th?id=OIP.0hQU8JAptZW9RH5A6eCgmgHaFB&pid=Api&P=0&h=180",
+            specialization: "Orthopedic Surgeon",
+            experience: 14,
+            qualification: "MBBS, MS (Orthopedics)",
+            languages: ["English", "Hindi"],
+            rating: 4.8,
+            consultationFee: 1400,
+            availability: ["Mon", "Wed", "Fri"],
+            isBooked: false
+          }
+        ]
+      },
+      {
+        name: "Dermatology, Venereology and Leprosy",
+        doctors: [
+          {
+            id: 2,
+            name: "Dr. Kavita Sharma",
+            image: "https://tse3.mm.bing.net/th?id=OIP.ofx88_RUVmLrTWAYHmr5tQHaE8&pid=Api&P=0&h=180",
+            specialization: "Dermatologist",
+            experience: 10,
+            qualification: "MBBS, MD (Dermatology)",
+            languages: ["English", "Hindi", "Punjabi"],
+            rating: 4.9,
+            consultationFee: 1200,
+            availability: ["Tue", "Thu", "Sat"],
+            isBooked: false
+          }
+        ]
+      },
+      {
+        name: "General Medicine",
+        doctors: [
+          {
+            id: 3,
+            name: "Dr. Ramesh Agarwal",
+            image: "https://tse2.mm.bing.net/th?id=OIP.VEMbAGEdHz8Xg0zW2Ja7aAHaG2&pid=Api&P=0&h=180",
+            specialization: "General Physician",
+            experience: 12,
+            qualification: "MBBS, MD (General Medicine)",
+            languages: ["English", "Hindi", "Marathi"],
+            rating: 4.8,
+            consultationFee: 1000,
+            availability: ["Tue", "Thu", "Sat"],
+            isBooked: false
+          }
+        ]
+      },
+      {
+        name: "Pediatrics",
+        doctors: [
+          {
+            id: 4,
+            name: "Dr. Meena Reddy",
+            image: "https://img.freepik.com/premium-photo/indian-female-doctor-indian-nurse_714173-205.jpg",
+            specialization: "Pediatrician",
+            experience: 11,
+            qualification: "MBBS, MD (Pediatrics)",
+            languages: ["English", "Hindi"],
+            rating: 4.9,
+            consultationFee: 1300,
+            availability: ["Mon", "Wed", "Fri"],
+            isBooked: false
+          }
+        ]
+      }
+    ]
   }
+  
+  // Repeat similar structure for other hospitals
 ];
 
-const doctorsData = {
-  1: [
-    {
-      id: 1,
-      name: "Dr. Sarah Johnson",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
-      specialization: "Cardiologist",
-      experience: 15,
-      qualification: "MBBS, MD, DM (Cardiology)",
-      languages: ["English", "Hindi"],
-      rating: 4.9,
-      consultationFee: 1500,
-      availability: ["Mon", "Wed", "Fri"],
-      isBooked: false
-    },
-    {
-      id: 2,
-      name: "Dr. Robert Wilson",
-      image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=80",
-      specialization: "Neurologist",
-      experience: 12,
-      qualification: "MBBS, MD (Neurology)",
-      languages: ["English", "Hindi", "Bengali"],
-      rating: 4.7,
-      consultationFee: 1200,
-      availability: ["Tue", "Thu", "Sat"],
-      isBooked: false
-    }
-  ],
-  // ... rest of the doctors data remains the same
-};
-
-// ... rest of the hospital data remains the same
-
-export default function HospitalDetails() {
-  const { id } = useParams<{ id: string }>();
+export default function Doctors() {
+  const { id,dep } = useParams<{ id: string,dep:string }>();
   const navigate = useNavigate();
   const [showAppointmentModal, setShowAppointmentModal] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
-  const hospital = hospitals[id as keyof typeof hospitals];
-  const doctors = doctorsData[id as keyof typeof doctorsData] || [];
+  // const hospital = hospitals[id as keyof typeof hospitals];
+  // const doctors = doctorsData[id as keyof typeof doctorsData] || [];
+
+  const hospital=hospitals.find(hospital=>hospital.id == id);
+  console.log(dep);
+  const {doctors,name}=hospital.departments.find(department=>department.name==dep);
+  console.log(doctors);
 
   const handleBookAppointment = (doctor: any) => {
     setSelectedDoctor(doctor);
@@ -116,9 +313,9 @@ export default function HospitalDetails() {
       {/* Hospital Header section remains the same */}
       
       {/* Doctors List */}
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Our Doctors</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-6">{name}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {doctors.map((doctor) => (
+        {doctors.map((doctor:any) => (
           <div key={doctor.id} className="bg-white rounded-lg shadow-md p-6">
             <div className="flex items-start space-x-4">
               <img
@@ -149,7 +346,7 @@ export default function HospitalDetails() {
                   </div>
                 </div>
                 
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-4 flex items-center justify-between gap-1">
                   <p className="text-teal-600 font-medium">₹{doctor.consultationFee}</p>
                   {doctor.isBooked ? (
                     <span className="bg-green-100 text-green-800 px-4 py-2 rounded-md">
