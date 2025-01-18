@@ -28,7 +28,7 @@ export default function Home() {
                   <input
                     type="text"
                     placeholder="Search for doctors, hospitals, pharmacy, laboratory, home healthcare services"
-                    className="flex-1 px-4 py-2 focus:outline-none"
+                    className="flex-1 px-4 py-2 focus:outline-none text-black"
                   />
                   <button className="bg-teal-600 text-white px-6 py-2 rounded-md hover:bg-teal-700 transition-colors duration-300">
                     Search
